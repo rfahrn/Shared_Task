@@ -1,0 +1,30 @@
+Detailed annotation guidelines for the Arabic data
+
+1. Data Collection:
+-------------------
+If we take any random Arabic tweets, we will find that less than 2% of them contain offensive language. We observed that many offensive tweets have the vocative particle يا ("yA" - meaning "O") which is mainly used in directing the speech to a specific person or group, ex: يا حيوان ("yA HywAn" - meaning "O animal!"). The ratio of having offensive tweets increases to 5% if a tweet has one vocative particle, and to 19% if it has two or more vocative particles. Users often repeat this particle for emphasis.
+
+We used Twitter API to collect Arabic tweets having the pattern يا...يا ("yA...yA" - meaning "O...O") starting from April 15, 2019 for continuous three weeks, and we obtained 660k Arabic tweets. To increase diversity, we sorted the word sequence between the two particles and took the most frequent unique sequences, and for each sequence we picked a random tweet containing each sequence ending up with 10,000 tweets.
+
+2. Annotation Guidelines:
+-------------------------
+Each tweet was labeled manually as offensive (OFF), or clean (not offensive, NOT) according to the following guidelines:
+a. Offensive tweet contains explicit or implicit insults or threats against other people or any inappropriate language. This also includes vulgar or swear words, expression of contempt for individuals or groups in addition to pornographic advertisements. Examples:
+يا كلب, O dog!
+كل تبن, Eat hay.
+احرقوا مقرات المعارضة, Burn the headquarters of the opposition.
+الله يلعنك, May God curse you!
+يا زنجي, O negro!
+
+b. Clean tweet doesn't contain vulgar or offensive language. Some difficult cases including humor, advice, condition, etc. were judged based on the intention of the users. For example, the following cases are not considered as offensive:
+يا عدوة الفرحة ههه, O enemy of happiness hahaha.
+لا تقل لصاحبك يا خنزير, Don’t say to your friend: You are a pig.
+إذا عارضتهم يقولون يا خاين, If you disagree with them, they say: You are traitor.
+
+Note:
+Annotation was performed by an expert native speaker who is exposed to different Arabic dialects. To validate annotation quality, we selected a random sample of 100 tweets (50 offensive and 50 clean tweets), and it was judged by three different annotators from different regions in the Arab world. The Inter-Annotator Agreement (IAA) between the annotators was 0.92 (Kappa score) indicating high annotation quality.
+
+
+So, we have two labels for each tweet:
+OFF     The tweet contains a form of non-acceptable language (profanity) or a targeted offense, which can be veiled or direct. 
+NOT     The tweet does not contain any offensive statement.
